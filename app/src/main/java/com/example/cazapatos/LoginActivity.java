@@ -3,12 +3,15 @@ package com.example.cazapatos;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.cazapatos.common.Constantes;
+
+import java.lang.reflect.Type;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -23,6 +26,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         etNick = findViewById(R.id.editTextNick);
         btnStart = findViewById(R.id.buttonStart);
+
+        //cambiamos fuente
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "pixel.ttf");
+        etNick.setTypeface(typeface);
+        btnStart.setTypeface(typeface);
 
         //Listeners
         btnStart.setOnClickListener(this);
