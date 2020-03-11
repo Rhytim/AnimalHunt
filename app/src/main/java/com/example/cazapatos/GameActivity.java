@@ -2,15 +2,20 @@ package com.example.cazapatos;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.cazapatos.common.Constantes;
 
-public class GameActivity extends AppCompatActivity {
+public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView tvCounterPatos, tvTimer, tvNick;
+    ImageView ivPato;
+    int counter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +25,7 @@ public class GameActivity extends AppCompatActivity {
         tvCounterPatos = findViewById(R.id.textViewCounter);
         tvTimer = findViewById(R.id.textViewTimer);
         tvNick = findViewById(R.id.textViewNick);
+        ivPato = findViewById(R.id.imageViewPato);
 
         //cambiamos fuente
         Typeface typeface = Typeface.createFromAsset(getAssets(), "pixel.ttf");
@@ -31,5 +37,19 @@ public class GameActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         String nick = extras.getString(Constantes.EXTRA_NICK);
         tvNick.setText(nick);
+
+        //listeners
+        ivPato.setOnClickListener(this);
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.imageViewPato:
+                counter++;
+                tvCounterPatos.setText(String.valueOf(counter));
+                break;
+        }
     }
 }
