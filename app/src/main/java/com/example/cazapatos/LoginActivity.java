@@ -46,6 +46,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }else if (nick.length() < 3) {
                     etNick.setError("Debe tener almenos 3 caracteres");
                 }else{
+                    etNick.setText(""); //al volver de la pantalla de juego, se limpiara el nombre
                     Intent i = new Intent(LoginActivity.this, GameActivity.class);
                     i.putExtra(Constantes.EXTRA_NICK,nick);
                     startActivity(i);
