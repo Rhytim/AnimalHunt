@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.Display;
 import android.view.View;
@@ -59,6 +60,21 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         //inicializamos el objeto random
         random = new Random();
+
+        //cuenta atras
+        new CountDownTimer(60000, 1000) { //param1: recibe los milisegundos que va a durar param2: milisegundos que va a ir bajando
+
+            //se llama cada segundo que pasa
+            public void onTick(long millisUntilFinished) {
+                long segundosRestantes = millisUntilFinished / 1000;
+                tvTimer.setText(segundosRestantes+"s");
+            }
+
+            //cuando acaba el tiempo
+            public void onFinish() {
+                tvTimer.setText("0s");
+            }
+        }.start();
     }
 
 
