@@ -22,12 +22,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        //iniciamos variables de los componentes
         tvCounterPatos = findViewById(R.id.textViewCounter);
         tvTimer = findViewById(R.id.textViewTimer);
         tvNick = findViewById(R.id.textViewNick);
         ivPato = findViewById(R.id.imageViewPato);
 
-        //cambiamos fuente
+        //cambiamos fuentes
         Typeface typeface = Typeface.createFromAsset(getAssets(), "pixel.ttf");
         tvCounterPatos.setTypeface(typeface);
         tvTimer.setTypeface(typeface);
@@ -46,7 +47,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.imageViewPato:
+            case R.id.imageViewPato: //sube el contador de numero de veces hecho click sobre el pato
                 counter++;
                 tvCounterPatos.setText(String.valueOf(counter));
                 break;
