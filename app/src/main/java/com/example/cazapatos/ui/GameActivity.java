@@ -31,6 +31,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     Random random;
     boolean acabado = false;
 
+    int tiempoMaximo = 10000;
+
     String id, nick;
     FirebaseFirestore db;
 
@@ -105,6 +107,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    // cambia la posicion del animal, por defecto pato, en una otra random de la pantalla
     public void moverPato() {
         int min = 0; //(0,0)
         int maxX = anchoPantalla - ivPato.getWidth(); //restandole la anchura del pato es para que no se salga
@@ -122,7 +125,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void cuentaAtras(){
-        new CountDownTimer(10000, 1000) { //param1: recibe los milisegundos que va a durar param2: milisegundos que va a ir bajando
+        new CountDownTimer(tiempoMaximo, 1000) { //param1: recibe los milisegundos que va a durar param2: milisegundos que va a ir bajando
 
             //se llama cada segundo que pasa
             public void onTick(long millisUntilFinished) {
