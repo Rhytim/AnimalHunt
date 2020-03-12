@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "81019746321",
+    "firebase_url": "https://hora-de-cazar-3208e.firebaseio.com",
+    "project_id": "hora-de-cazar-3208e",
+    "storage_bucket": "hora-de-cazar-3208e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:81019746321:android:523b5f594cf4bf9b7559b0",
+        "android_client_info": {
+          "package_name": "com.example.cazapatos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "81019746321-65t51mr7n3glv3gupjg2v2hm95efmv9g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmBf8gctUQaHK6uritQy-Lj3tQo7WiJHg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "81019746321-65t51mr7n3glv3gupjg2v2hm95efmv9g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
