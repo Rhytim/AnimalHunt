@@ -3,6 +3,7 @@ package com.example.cazapatos.ui;
 import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,6 +15,12 @@ import android.view.ViewGroup;
 
 import com.example.cazapatos.R;
 import com.example.cazapatos.models.User;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +33,8 @@ public class UserRankingFragment extends Fragment {
     private int mColumnCount = 1;
     List<User> userList;
     MyUserRecyclerViewAdapter adapter;
+    FirebaseFirestore db;
+    RecyclerView recyclerView;
 
     public UserRankingFragment() {
     }
@@ -44,6 +53,8 @@ public class UserRankingFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        db = FirebaseFirestore.getInstance();
+
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
@@ -57,16 +68,25 @@ public class UserRankingFragment extends Fragment {
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
+            recyclerView = (RecyclerView) view;
             if (mColumnCount <= 1) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
 
-            userList = new ArrayList<>();
-            adapter = new MyUserRecyclerViewAdapter(userList);
-            recyclerView.setAdapter(adapter);
+            db.collection("users").orderBy("animal", Query.Direction.DESCENDING).limit(10).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    userList = new ArrayList<>();
+                    for (DocumentSnapshot document: task.getResult()){
+                        User userItem = document.toObject(User.class);
+                        userList.add(userItem);
+                        adapter = new MyUserRecyclerViewAdapter(userList);
+                        recyclerView.setAdapter(adapter);
+                    }
+                }
+            });
         }
         return view;
     }
