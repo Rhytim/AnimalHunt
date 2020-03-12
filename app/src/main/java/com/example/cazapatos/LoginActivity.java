@@ -72,6 +72,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                         etNick.setText(""); //al volver de la pantalla de juego, se limpiara el nombre
                                         Intent i = new Intent(LoginActivity.this, GameActivity.class);
                                         i.putExtra(Constantes.EXTRA_NICK,nick);
+                                        i.putExtra(Constantes.EXTRA_ID,documentReference.getId());
                                         startActivity(i);
                                     }
                                 });

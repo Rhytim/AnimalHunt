@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.cazapatos.common.Constantes;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Random;
 
@@ -29,10 +30,16 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     Random random;
     boolean acabado = false;
 
+    String id, nick;
+    FirebaseFirestore db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        //iniciamos conexion a firestore
+        db = FirebaseFirestore.getInstance();
 
         //iniciamos variables de los componentes
         tvCounterPatos = findViewById(R.id.textViewCounter);
@@ -48,7 +55,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         // Obtencion del nick y ponerlo de titulo en la pantalla de juego
         Bundle extras = getIntent().getExtras();
-        String nick = extras.getString(Constantes.EXTRA_NICK);
+        nick = extras.getString(Constantes.EXTRA_NICK);
+        id = extras.getString(Constantes.EXTRA_ID);
+
         tvNick.setText(nick);
 
         //listeners
@@ -125,6 +134,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 tvTimer.setText("0s");
                 acabado = true;
                 mostrarCuadroDialogoAcabado();
+                saveResultFirestore();
             }
         }.start();
     }
@@ -153,5 +163,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+
+    private void saveResultFirestore() {
+        db.collection("users").document(id).update("animal",counter);
     }
 }
