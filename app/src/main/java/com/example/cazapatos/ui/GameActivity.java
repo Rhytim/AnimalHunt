@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -154,12 +155,21 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 moverPato();
             }
         });
+        builder.setNegativeButton("Ver Ranking", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+                Intent i = new Intent(GameActivity.this,RankingActivity.class);
+                startActivity(i);
+            }
+        });
+        /*
         builder.setNegativeButton("Salir", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.dismiss();
                 finish();
             }
         });
+        */
 
         AlertDialog dialog = builder.create();
         dialog.show();
