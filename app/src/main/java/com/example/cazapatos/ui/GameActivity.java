@@ -1,10 +1,9 @@
-package com.example.cazapatos;
+package com.example.cazapatos.ui;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -15,6 +14,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.cazapatos.R;
 import com.example.cazapatos.common.Constantes;
 import com.google.firebase.firestore.FirebaseFirestore;
 

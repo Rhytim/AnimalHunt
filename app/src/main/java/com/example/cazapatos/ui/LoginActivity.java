@@ -1,4 +1,4 @@
-package com.example.cazapatos;
+package com.example.cazapatos.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,14 +9,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.cazapatos.R;
 import com.example.cazapatos.common.Constantes;
 import com.example.cazapatos.models.User;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-
-import java.lang.reflect.Type;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
