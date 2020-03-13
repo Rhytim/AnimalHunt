@@ -25,19 +25,18 @@ import java.util.TimerTask;
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextView tvCounterPatos, tvTimer, tvNick;
-    ImageView ivPato;
-    int counter = 0;
-    int anchoPantalla;
-    int altoPantalla;
-    Random random;
-    boolean acabado = false;
+    private TextView tvCounterPatos, tvTimer, tvNick;
+    private ImageView ivPato;
+    private int counter = 0;
+    private int anchoPantalla;
+    private int altoPantalla;
+    private Random random;
+    private boolean acabado = false;
 
+    private int tiempoMaximo = 10000;
 
-    int tiempoMaximo = 10000;
-
-    String id, nick;
-    FirebaseFirestore db;
+    private String id, nick;
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +81,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         //cuenta atras
         cuentaAtras();
 
+        //mueve el animal por la pantalla
         moverAnimalSiempre();
     }
 
@@ -113,7 +113,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     // cambia la posicion del animal, por defecto pato, en una otra random de la pantalla
-    public void moverPato() {
+    private void moverPato() {
         int min = 0; //(0,0)
         int maxX = anchoPantalla - ivPato.getWidth(); //restandole la anchura del pato es para que no se salga
         //de la pantalla su cuerpo
@@ -148,7 +148,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         }.start();
     }
 
-    public void moverAnimalSiempre() {
+    private void moverAnimalSiempre() {
         final Timer timer = new Timer();
         if (!acabado) {
                 timer.schedule(new TimerTask() {
