@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="16dp">
+    android:padding="12dp">
 
     <TextView
         android:id="@+id/textViewPosition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:text="TextView"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/textViewAnimal"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,26 +21,23 @@
         android:id="@+id/textViewAnimal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="8dp"
         android:text="TextView"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewPosition"
-        app:layout_constraintEnd_toStartOf="@+id/textViewNick"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textViewPosition"
-        app:layout_constraintTop_toTopOf="@+id/textViewPosition"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewNick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
         android:text="TextView"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewAnimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textViewAnimal"
-        app:layout_constraintTop_toTopOf="@+id/textViewAnimal"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
