@@ -26,7 +26,7 @@ import java.util.TimerTask;
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView tvCounterPatos, tvTimer, tvNick;
-    private ImageView ivPato;
+    private ImageView ivPato, ivDialog;
     private int counter = 0;
     private int anchoPantalla;
     private int altoPantalla;
@@ -51,6 +51,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         tvTimer = findViewById(R.id.textViewTimer);
         tvNick = findViewById(R.id.textViewNick);
         ivPato = findViewById(R.id.imageViewPato);
+        ivDialog = findViewById(R.id.imageViewDialog);
 
         //cambiamos fuentes
         Typeface typeface = Typeface.createFromAsset(getAssets(), "pixel.ttf");
@@ -67,6 +68,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         //listeners
         ivPato.setOnClickListener(this);
+        ivDialog.setOnClickListener(this);
 
         //cogemos la grandaria de la pantalla del dispositivo donde ejecutaremos el juego
         Display display = getWindowManager().getDefaultDisplay();
@@ -105,6 +107,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                         }
                     }, 100);
                 }
+                break;
+            case R.id.imageViewDialog:
+                mostrarCuadroDialogoAcabado();
                 break;
         }
     }

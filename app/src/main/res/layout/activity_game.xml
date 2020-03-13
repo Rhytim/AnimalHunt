@@ -12,27 +12,51 @@
         android:id="@+id/imageViewPato"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        app:srcCompat="@drawable/duck"
-        tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="315dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/duck" />
 
     <ImageView
         android:id="@+id/imageViewCounter"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewCounter"
+        app:layout_constraintEnd_toStartOf="@+id/textViewCounter"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintVertical_bias="0.375"
         app:srcCompat="@drawable/duck_hunt_logo" />
 
     <TextView
         android:id="@+id/textViewCounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
         android:text="0"
-        app:layout_constraintBottom_toBottomOf="@+id/imageViewCounter"
-        app:layout_constraintStart_toEndOf="@+id/imageViewCounter"
-        app:layout_constraintTop_toTopOf="@+id/imageViewCounter" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTimer" />
+
+    <TextView
+        android:id="@+id/textViewTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="60s"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewTimer"
+        app:layout_constraintEnd_toStartOf="@+id/textViewTimer"
+        app:layout_constraintTop_toTopOf="@+id/textViewTimer"
+        app:srcCompat="@drawable/clock" />
 
     <TextView
         android:id="@+id/textViewNick"
@@ -44,20 +68,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/imageViewDialog"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewTimer"
-        app:layout_constraintEnd_toStartOf="@+id/textViewTimer"
-        app:layout_constraintTop_toTopOf="@+id/textViewTimer"
-        app:srcCompat="@drawable/ic_cronografo" />
+        android:layout_marginStart="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/menu" />
 
-    <TextView
-        android:id="@+id/textViewTimer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="60s"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
