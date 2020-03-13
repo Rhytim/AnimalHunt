@@ -20,6 +20,8 @@ import com.example.cazapatos.common.Constantes;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -30,6 +32,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     int altoPantalla;
     Random random;
     boolean acabado = false;
+
 
     int tiempoMaximo = 10000;
 
@@ -76,16 +79,17 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         //inicializamos el objeto random
         random = new Random();
 
-        moverPato();
-
         //cuenta atras
         cuentaAtras();
+
+        moverAnimalSiempre();
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.imageViewPato:
+
                 //si la partida no ha acabado aun, se puede hacer click al pato
                 if (!acabado) {
                     //sube el contador de numero de veces hecho click sobre el pato
@@ -100,7 +104,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                             ivPato.setImageResource(R.drawable.duck);
                             moverPato();
                         }
-                    }, 500);
+                    }, 100);
+
                 }
 
                 break;
@@ -124,7 +129,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         ivPato.setY(randomY);
     }
 
-    private void cuentaAtras(){
+    private void cuentaAtras() {
         new CountDownTimer(tiempoMaximo, 1000) { //param1: recibe los milisegundos que va a durar param2: milisegundos que va a ir bajando
 
             //se llama cada segundo que pasa
@@ -141,6 +146,23 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 saveResultFirestore();
             }
         }.start();
+    }
+
+    public void moverAnimalSiempre() {
+        final Timer timer = new Timer();
+        if (!acabado) {
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                moverPato();
+                            }
+                        });
+                    }
+                }, 0, 1000);
+        }
     }
 
     //el usuario vera los patos que ha cazado y ademas vamos a gestionar la alternativa de salir del juego o reiniciar la partida
@@ -161,7 +183,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         builder.setNegativeButton("Ver Ranking", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.dismiss();
-                Intent i = new Intent(GameActivity.this,RankingActivity.class);
+                Intent i = new Intent(GameActivity.this, RankingActivity.class);
                 startActivity(i);
             }
         });
@@ -180,6 +202,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private void saveResultFirestore() {
-        db.collection("users").document(id).update("animal",counter);
+        db.collection("users").document(id).update("animal", counter);
     }
 }
