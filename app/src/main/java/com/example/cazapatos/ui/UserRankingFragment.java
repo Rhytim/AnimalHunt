@@ -75,7 +75,7 @@ public class UserRankingFragment extends Fragment {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
 
-            db.collection("users").orderBy("animal", Query.Direction.DESCENDING).limit(10).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            db.collection("users").orderBy("animal", Query.Direction.DESCENDING).limit(9).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                     userList = new ArrayList<>();

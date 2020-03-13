@@ -33,7 +33,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private Random random;
     private boolean acabado = false;
 
-    private int tiempoMaximo = 10000;
+    private int tiempoMaximo = 60000;
 
     private String id, nick;
     private FirebaseFirestore db;
