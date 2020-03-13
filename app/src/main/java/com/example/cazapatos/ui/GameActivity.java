@@ -89,7 +89,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.imageViewPato:
-
                 //si la partida no ha acabado aun, se puede hacer click al pato
                 if (!acabado) {
                     //sube el contador de numero de veces hecho click sobre el pato
@@ -105,9 +104,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                             moverPato();
                         }
                     }, 100);
-
                 }
-
                 break;
         }
     }
@@ -118,7 +115,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         int maxX = anchoPantalla - ivPato.getWidth(); //restandole la anchura del pato es para que no se salga
         //de la pantalla su cuerpo
         int maxY = altoPantalla - ivPato.getHeight();//restandole la altura del pato es para que no se salga
-        //de la pantalla
+        //de la pantalla su altura
 
         //generamos dos numeros aleatorios, para la coordenada x y.
         int randomX = random.nextInt(((maxX - min) + 1) + min);
